@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://radiant-brioche-0212bb.netlify.app/sitemap.xml
