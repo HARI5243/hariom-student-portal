@@ -1,0 +1,13 @@
+{
+  "name": "hariom-student-portal",
+  "version": "1.0.0",
+  "description": "Student portal with backend support for contact and CGPA calculation.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.4"
+  }
+}
