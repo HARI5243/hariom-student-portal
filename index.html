@@ -14,13 +14,16 @@
 
     <meta name="author" content="Hariom Tiwari">
 
-    <title><title>Hariom Student Portal | Learn Programming, DSA, Web Development & Placement Preparation</title></title>
+    <title>Hariom Student Portal | Learn Programming, DSA, Web Development & Placement Preparation</title>
 
     <link rel="stylesheet" href="style.css">
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%232563eb' width='100' height='100' rx='20'/><text x='50' y='70' font-size='60' font-weight='bold' fill='white' text-anchor='middle' font-family='Arial'>📚</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%232563eb' width='100' height='100' rx='20'/><text x='50' y='70' font-size='60' fill='white' text-anchor='middle'>📚</text></svg>">
 </head>
 <body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
     <div id="welcomeOverlay" class="welcome-overlay">
         <div class="welcome-card">
             <p class="eyebrow">Welcome to Our Family</p>
@@ -36,7 +39,7 @@
                 <div class="logo">📚</div>
                 <div>
                     <h1>Hariom Student Portal</h1>
-                    <p class="tagline"> Programming • DSA • Web Development • Placement Preparation</p>
+                    <p class="tagline">Programming • DSA • Web Development • Placement Preparation</p>
                 </div>
             </div>
 
@@ -81,16 +84,16 @@
             <div class="hero-copy">
                 <p class="eyebrow">🚀 Learn • Build • Innovate</p>
 
-<h2>
-    Learn Programming, DSA, Web Development,
-    AI/ML & Placement Preparation
-</h2>
+                <h2 class="typing-effect">
+                    Learn Programming, DSA, Web Development,
+                    AI/ML & Placement Preparation
+                </h2>
 
-<p>
-     One Platform for Computer Science Students.
-    Master Coding, Build Real Projects, Practice DSA,
-    Prepare for Placements, and Accelerate Your Tech Career
-</p>
+                <p>
+                    One Platform for Computer Science Students.
+                    Master Coding, Build Real Projects, Practice DSA,
+                    Prepare for Placements, and Accelerate Your Tech Career
+                </p>
                 <div class="hero-buttons">
                     <button id="openDashboard" class="primary-button">📊 Go to Dashboard</button>
                     <button id="openResources" class="secondary-button">📖 Study Resources</button>
@@ -113,48 +116,99 @@
                 </div>
             </div>
             <div class="hero-cards">
-                <div class="stat-card card-1">
+                <div class="stat-card card-1 fade-in-on-scroll">
                     <div class="card-icon">📊</div>
                     <p>Your CGPA</p>
-                    <h3 id="heroCgpa">8.2</h3>
+                    <h3 class="counter" data-target="8.2">0</h3>
                 </div>
-                <div class="stat-card card-2">
+                <div class="stat-card card-2 fade-in-on-scroll">
                     <div class="card-icon">✅</div>
                     <p>Tasks Done</p>
-                    <h3>24</h3>
+                    <h3 class="counter" data-target="24">0</h3>
                 </div>
-                <div class="stat-card card-3">
+                <div class="stat-card card-3 fade-in-on-scroll">
                     <div class="card-icon">🔔</div>
                     <p>Updates</p>
-                    <h3>5</h3>
+                    <h3 class="counter" data-target="5">0</h3>
                 </div>
             </div>
         </section>
 
         <section id="dashboard" class="section container dashboard-section">
-            <div class="section-heading">
-                <h3>Dashboard</h3>
+            <div class="section-heading fade-in-on-scroll">
+                <h3>📊 Dashboard</h3>
                 <p>Student overview, latest announcements, upcoming deadlines, and quick access tools.</p>
             </div>
             <div class="grid dashboard-grid">
-                <article class="student-overview">
-                    <h4>Student Overview</h4>
-                    <p><span class="student-name">Hariom Tiwari</span> — <strong>BCA</strong> student at <strong>Shershah College, Sasaram</strong></p>
-                    <p><strong>Goal:</strong> Become a Software Engineer after completing BCA.</p>
-                    <p><strong>Marks:</strong> Subject1: 85, Subject2: 78, Subject3: 82</p>
-                    <p><strong>CGPA:</strong> 8.2</p>
-                    <p class="bio">Hariom Tiwari is an aspiring software engineer with a strong foundation in core computer science principles gained during his BCA at Shershah College, Sasaram. He enjoys building practical applications using Java, Python, and JavaScript, and focuses on data structures, algorithms, and software design. Hariom has completed academic projects and participates in coding practice to improve problem-solving skills. He values clean, maintainable code and collaborative development, and is actively learning full-stack development and software engineering best practices. Passionate about turning ideas into efficient software, Hariom aims to contribute to impactful engineering teams and continuous learning. Thank you — visit my website.</p>
+                <article class="student-overview glassmorphism fade-in-on-scroll">
+                    <h4>👤 Student Profile</h4>
+                    <div class="profile-card">
+                        <div class="profile-avatar">HT</div>
+                        <div class="profile-info">
+                            <p><span class="student-name">Hariom Tiwari</span></p>
+                            <p><strong>BCA</strong> | Shershah College, Sasaram</p>
+                            <p class="profile-goal">💼 Goal: Software Engineer</p>
+                        </div>
+                    </div>
+                    <hr style="border: none; border-top: 1px solid rgba(37, 99, 235, 0.1); margin: 1rem 0;">
+                    <div class="profile-stats">
+                        <div class="stat-row">
+                            <span>📈 CGPA:</span>
+                            <strong>8.2</strong>
+                        </div>
+                        <div class="stat-row">
+                            <span>✅ Attendance:</span>
+                            <strong>92%</strong>
+                        </div>
+                        <div class="stat-row">
+                            <span>📚 Completed:</span>
+                            <strong>24 Tasks</strong>
+                        </div>
+                    </div>
                 </article>
-                <article>
-                    <h4>Latest Announcements</h4>
-                    <p>New exam timetable released. Library hours updated. Project submission deadline extended.</p>
+                <article class="glassmorphism fade-in-on-scroll">
+                    <h4>📢 Latest Announcements</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(37, 99, 235, 0.1);">
+                            <strong>New exam timetable released</strong>
+                            <p style="margin: 0.25rem 0 0; font-size: 0.9rem; color: #64748b;">2 hours ago</p>
+                        </li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(37, 99, 235, 0.1);">
+                            <strong>Library hours updated</strong>
+                            <p style="margin: 0.25rem 0 0; font-size: 0.9rem; color: #64748b;">5 hours ago</p>
+                        </li>
+                        <li style="padding: 0.5rem 0;">
+                            <strong>Project deadline extended</strong>
+                            <p style="margin: 0.25rem 0 0; font-size: 0.9rem; color: #64748b;">1 day ago</p>
+                        </li>
+                    </ul>
                 </article>
-                <article>
-                    <h4>Upcoming Deadlines</h4>
-                    <p>Math assignment: 2026-06-10<br>Science project: 2026-06-12<br>Java lab: 2026-06-15</p>
+                <article class="glassmorphism fade-in-on-scroll">
+                    <h4>⏰ Upcoming Deadlines</h4>
+                    <div class="deadline-item">
+                        <span class="deadline-icon">📐</span>
+                        <div>
+                            <p><strong>Math Assignment</strong></p>
+                            <p style="font-size: 0.9rem; color: #64748b;">2026-06-10</p>
+                        </div>
+                    </div>
+                    <div class="deadline-item">
+                        <span class="deadline-icon">🔬</span>
+                        <div>
+                            <p><strong>Science Project</strong></p>
+                            <p style="font-size: 0.9rem; color: #64748b;">2026-06-12</p>
+                        </div>
+                    </div>
+                    <div class="deadline-item">
+                        <span class="deadline-icon">☕</span>
+                        <div>
+                            <p><strong>Java Lab</strong></p>
+                            <p style="font-size: 0.9rem; color: #64748b;">2026-06-15</p>
+                        </div>
+                    </div>
                 </article>
-                <article>
-                    <h4>Quick Links</h4>
+                <article class="glassmorphism fade-in-on-scroll">
+                    <h4>🔗 Quick Links</h4>
                     <div class="quick-link-strip">
                         <div class="link-track">
                             <a href="#notes" class="link-chip">📝 Notes</a>
@@ -165,35 +219,35 @@
                             <a href="#tools" class="link-chip">🧮 Tools</a>
                         </div>
                     </div>
-                    <p>Tap any item to jump directly to your notes, programming resources, or tools. Hover to pause scrolling.</p>
+                    <p style="margin-top: 0.75rem; font-size: 0.9rem;">Tap any item to jump directly to your notes, programming resources, or tools. Hover to pause scrolling.</p>
                 </article>
             </div>
         </section>
 
         <section id="resources" class="section container resources-section">
             <span id="notes"></span>
-            <div class="section-heading">
-                <h3>Study Resources</h3>
+            <div class="section-heading fade-in-on-scroll">
+                <h3>📚 Study Resources</h3>
                 <p>Subject-wise notes, PDF books, previous year papers, syllabus, and lab manuals.</p>
             </div>
             <div class="grid resource-grid">
-                <article>
-                    <h4>Subject Notes</h4>
+                <article class="glassmorphism fade-in-on-scroll">
+                    <h4>📖 Subject Notes</h4>
                     <p>Mathematics • Science • English • Computer Science</p>
                     <a href="https://www.google.com/search?q=Subject+Notes+Mathematics+Science+English+Computer+Science" target="_blank" class="resource-link">Search on Google</a>
                 </article>
-                <article>
-                    <h4>PDF Books</h4>
+                <article class="glassmorphism fade-in-on-scroll">
+                    <h4>📕 PDF Books</h4>
                     <p>Free textbooks and guides for all core CS subjects.</p>
                     <a href="https://www.google.com/search?q=PDF+Books+Computer+Science+Textbooks" target="_blank" class="resource-link">Search on Google</a>
                 </article>
-                <article>
-                    <h4>Previous Papers</h4>
+                <article class="glassmorphism fade-in-on-scroll">
+                    <h4>📜 Previous Papers</h4>
                     <p>Download last-year question papers for better preparation.</p>
                     <a href="https://www.google.com/search?q=Previous+Year+Question+Papers+Computer+Science" target="_blank" class="resource-link">Search on Google</a>
                 </article>
-                <article>
-                    <h4>Syllabus</h4>
+                <article class="glassmorphism fade-in-on-scroll">
+                    <h4>📋 Syllabus</h4>
                     <p>Full syllabus available for easy review and planning.</p>
                     <a href="https://www.google.com/search?q=Computer+Science+Syllabus" target="_blank" class="resource-link">Search on Google</a>
                 </article>
@@ -201,44 +255,44 @@
         </section>
 
         <section id="programming" class="section container programming-section">
-            <div class="section-heading">
-                <h3>Programming Section</h3>
+            <div class="section-heading fade-in-on-scroll">
+                <h3>💻 Programming Section</h3>
                 <p>Learn languages and key CS subjects with hands-on resources.</p>
             </div>
             <div class="grid language-grid">
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>C Programming</h4>
                     <a href="https://www.google.com/search?q=C+Programming+tutorial" target="_blank" class="resource-link">Search on Google</a>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>C++</h4>
                     <a href="https://www.google.com/search?q=C%2B%2B+tutorial" target="_blank" class="resource-link">Search on Google</a>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>Java</h4>
                     <a href="https://www.google.com/search?q=Java+tutorial" target="_blank" class="resource-link">Search on Google</a>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>Python</h4>
                     <a href="https://www.google.com/search?q=Python+tutorial" target="_blank" class="resource-link">Search on Google</a>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>JavaScript</h4>
                     <a href="https://www.google.com/search?q=JavaScript+tutorial" target="_blank" class="resource-link">Search on Google</a>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>DSA</h4>
                     <a href="https://www.google.com/search?q=Data+Structures+and+Algorithms+tutorial" target="_blank" class="resource-link">Search on Google</a>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>DBMS</h4>
                     <a href="https://www.google.com/search?q=DBMS+tutorial" target="_blank" class="resource-link">Search on Google</a>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>OS</h4>
                     <a href="https://www.google.com/search?q=Operating+Systems+tutorial" target="_blank" class="resource-link">Search on Google</a>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>Networks</h4>
                     <a href="https://www.google.com/search?q=Computer+Networks+tutorial" target="_blank" class="resource-link">Search on Google</a>
                 </article>
@@ -247,12 +301,12 @@
 
         <section id="cs-links" class="section container cs-links-section">
             <span id="course-hub"></span>
-            <div class="section-heading">
-                <h3><a class="section-anchor" href="#course-hub">Course Hub</a></h3>
+            <div class="section-heading fade-in-on-scroll">
+                <h3><a class="section-anchor" href="#course-hub">🎓 Course Hub</a></h3>
                 <p>20 curated CS resources with short explanations for study, practice, and interview prep.</p>
             </div>
             <div class="cs-link-grid">
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <ul class="cs-links-list">
                         <li><a href="https://www.geeksforgeeks.org" target="_blank">GeeksforGeeks</a><span>Comprehensive tutorials for data structures, algorithms, and competitive programming.</span></li>
                         <li><a href="https://www.freecodecamp.org" target="_blank">freeCodeCamp</a><span>Learn JavaScript, web development, and full-stack skills with interactive lessons.</span></li>
@@ -280,24 +334,24 @@
         </section>
 
         <section id="practice" class="section container practice-section">
-            <div class="section-heading">
-                <h3><a class="section-anchor" href="#practice">Coding Practice</a></h3>
+            <div class="section-heading fade-in-on-scroll">
+                <h3><a class="section-anchor" href="#practice">🧠 Coding Practice</a></h3>
                 <p>Sharpen your skills with daily questions, MCQs, aptitude and interview practice.</p>
             </div>
             <div class="grid practice-grid">
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>Daily Coding</h4>
                     <a href="https://www.google.com/search?q=Daily+Coding+practice+problems" target="_blank" class="resource-link">Search on Google</a>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>MCQ Tests</h4>
                     <a href="https://www.google.com/search?q=MCQ+tests+computer+science" target="_blank" class="resource-link">Search on Google</a>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>Aptitude</h4>
                     <a href="https://www.google.com/search?q=Aptitude+questions+for+placements" target="_blank" class="resource-link">Search on Google</a>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>Interview Qs</h4>
                     <a href="https://www.google.com/search?q=Interview+questions+for+software+engineering" target="_blank" class="resource-link">Search on Google</a>
                 </article>
@@ -305,24 +359,24 @@
         </section>
 
         <section id="projects" class="section container projects-section">
-            <div class="section-heading">
-                <h3><a class="section-anchor" href="#projects">Projects Hub</a></h3>
+            <div class="section-heading fade-in-on-scroll">
+                <h3><a class="section-anchor" href="#projects">🧩 Projects Hub</a></h3>
                 <p>Mini projects, major projects, source code downloads and report templates.</p>
             </div>
             <div class="grid project-grid">
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>Mini Projects</h4>
                     <a href="https://www.google.com/search?q=Mini+projects+ideas+for+students" target="_blank" class="resource-link">Search on Google</a>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>Major Projects</h4>
                     <a href="https://www.google.com/search?q=Major+project+ideas+college+computer+science" target="_blank" class="resource-link">Search on Google</a>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>Source Code</h4>
                     <a href="https://www.google.com/search?q=Project+source+code+examples" target="_blank" class="resource-link">Search on Google</a>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>Project Reports</h4>
                     <a href="https://www.google.com/search?q=Project+report+templates+computer+science" target="_blank" class="resource-link">Search on Google</a>
                 </article>
@@ -330,24 +384,24 @@
         </section>
 
         <section id="placement" class="section container placement-section">
-            <div class="section-heading">
-                <h3>Placement Preparation</h3>
+            <div class="section-heading fade-in-on-scroll">
+                <h3>🎯 Placement Preparation</h3>
                 <p>Resume templates, interview experiences, HR and technical preparation guides.</p>
             </div>
             <div class="grid placement-grid">
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>Resume Templates</h4>
                     <a href="https://www.google.com/search?q=Resume+templates+for+placement" target="_blank" class="resource-link">Search on Google</a>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>Interview Tips</h4>
                     <a href="https://www.google.com/search?q=Interview+tips+for+placements" target="_blank" class="resource-link">Search on Google</a>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>Company Prep</h4>
                     <a href="https://www.google.com/search?q=Company+preparation+for+placements" target="_blank" class="resource-link">Search on Google</a>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>HR Qs</h4>
                     <a href="https://www.google.com/search?q=HR+questions+for+interviews" target="_blank" class="resource-link">Search on Google</a>
                 </article>
@@ -355,12 +409,12 @@
         </section>
 
         <section id="tools" class="section container tools-section">
-            <div class="section-heading">
-                <h3>Academic Tools</h3>
+            <div class="section-heading fade-in-on-scroll">
+                <h3>🧮 Academic Tools</h3>
                 <p>CGPA calculator, percentage calculator, and attendance calculator.</p>
             </div>
-            <div class="tool-card">
-                <h4>CGPA & Percentage Calculator</h4>
+            <div class="tool-card glassmorphism fade-in-on-scroll">
+                <h4>📊 CGPA & Percentage Calculator</h4>
                 <form id="cgpaForm" class="tool-form">
                     <div class="form-row">
                         <label for="marks1">Marks 1</label>
@@ -381,61 +435,53 @@
         </section>
 
         <section id="notices" class="section container notices-section">
-            <div class="section-heading">
-                <h3>Latest Announcements</h3>
+            <div class="section-heading fade-in-on-scroll">
+                <h3>📣 Latest Announcements</h3>
                 <p>Stay updated: notes, quizzes, websites and lectures for CS students.</p>
             </div>
             <div class="notice-list">
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>Campus Notifications</h4>
                     <p>New exam timetable released. Library hours updated. Project submission deadline extended.</p>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>New Notes Uploaded</h4>
                     <p>Comprehensive Computer Science notes for Sem 4 are available. <a href="#resources">View Notes</a>.</p>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>Weekly Quiz Released</h4>
                     <p>MCQ quiz on Data Structures is live. <a href="https://example.com/quiz/dsa-weekly" target="_blank">Take the Quiz</a>.</p>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>Useful Websites</h4>
                     <p>Curated list of coding resources and documentation: <a href="https://www.geeksforgeeks.org" target="_blank">GeeksforGeeks</a>, <a href="https://www.freecodecamp.org" target="_blank">freeCodeCamp</a>.</p>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>Mini Project Showcase</h4>
                     <p>Submit your mini project by the end of the month to be featured on the projects hub.</p>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>Lab Assignment Released</h4>
                     <p>New Java lab task uploaded. Check the lab manual in resources and submit via the portal.</p>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>Peer Coding Challenge</h4>
                     <p>Join the weekend peer challenge to improve problem solving and teamwork.</p>
                 </article>
-                <article>
+                <article class="glassmorphism fade-in-on-scroll">
                     <h4>Exam Tips & PYQs</h4>
                     <p>Previous year questions and exam strategies added to the resources section.</p>
-                </article>
-                <article>
-                    <h4>Guest Lecture Links (Computer Science)</h4>
-                    <p>
-                        1) <a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/" target="_blank">MIT OCW — Introduction to Algorithms</a><br>
-                        2) <a href="https://nptel.ac.in/courses/106/106/106106133/" target="_blank">NPTEL — Operating Systems Lectures</a><br>
-                        3) <a href="https://www.youtube.com/playlist?list=PLu0W_9lII9ah7DDtYtflgwMwpT3xmjXY9" target="_blank">freeCodeCamp — Data Structures & Algorithms (playlist)</a>
-                    </p>
                 </article>
             </div>
         </section>
 
         <section id="contact" class="section container contact-section">
-            <div class="section-heading">
-                <h3>Contact Me</h3>
+            <div class="section-heading fade-in-on-scroll">
+                <h3>✉️ Contact Me</h3>
                 <p>Get in touch or follow on social media</p>
             </div>
             <div class="contact-grid">
-                <div class="contact-card">
+                <div class="contact-card glassmorphism fade-in-on-scroll">
                     <h4>📧 Get In Touch</h4>
                     <p>📧 Email: <a href="mailto:tiwariohariom211@gmail.com">tiwariohariom211@gmail.com</a></p>
                     <p>📱 Phone: <a href="tel:+916206152782">+91 6206152782</a></p>
@@ -444,7 +490,7 @@
                     <p>📸 Instagram: <a href="https://instagram.com/hariom__tiwari__" target="_blank">@hariom__tiwari__</a></p>
                     <p>💼 LinkedIn: <a href="https://www.linkedin.com/in/hariom-tiwari-913a8537a" target="_blank">Hariom Tiwari</a></p>
                 </div>
-                <form id="contactForm" class="contact-form">
+                <form id="contactForm" class="contact-form glassmorphism fade-in-on-scroll">
                     <label for="contactName">Name</label>
                     <input id="contactName" type="text" placeholder="Your name" required>
                     <label for="contactEmail">Email</label>
@@ -457,6 +503,9 @@
             </div>
         </section>
     </main>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">⬆️</button>
 
     <footer class="site-footer">
         <div class="container footer-grid">
@@ -479,4 +528,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
