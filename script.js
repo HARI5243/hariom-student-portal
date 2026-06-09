@@ -14,7 +14,88 @@ const contactName = document.getElementById("contactName");
 const contactEmail = document.getElementById("contactEmail");
 const contactMessage = document.getElementById("contactMessage");
 
-// Check for saved theme preference
+// ==================== Progress Bar ====================
+function initProgressBar() {
+    const progressBar = document.querySelector('.progress-bar');
+    if (!progressBar) return;
+
+    window.addEventListener('scroll', () => {
+        const scroll = window.scrollY;
+        const height = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scroll / height) * 100;
+        progressBar.style.width = scrollPercent + '%';
+    });
+}
+
+// ==================== Counter Animation ====================
+function animateCounters() {
+    const counters = document.querySelectorAll('.counter');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = parseFloat(entry.target.getAttribute('data-target'));
+                animateCounter(entry.target, target);
+                observer.unobserve(entry.target);
+            }
+        });
+    });
+
+    counters.forEach(counter => observer.observe(counter));
+}
+
+function animateCounter(element, target) {
+    let current = 0;
+    const increment = target / 50;
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+        } else {
+            element.textContent = current.toFixed(1);
+        }
+    }, 30);
+}
+
+// ==================== Fade In On Scroll ====================
+function initScrollAnimations() {
+    const elements = document.querySelectorAll('.fade-in-on-scroll');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    elements.forEach(element => observer.observe(element));
+}
+
+// ==================== Back to Top Button ====================
+function initBackToTop() {
+    const backToTopBtn = document.getElementById('backToTop');
+    if (!backToTopBtn) return;
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// ==================== Theme Toggle ====================
 if (localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark");
     themeToggle.textContent = "☀️";
@@ -22,10 +103,12 @@ if (localStorage.getItem("theme") === "dark") {
 
 openDashboard.addEventListener("click", () => {
     document.querySelector("#dashboard").scrollIntoView({ behavior: "smooth" });
+    closeMobileMenu();
 });
 
 openResources.addEventListener("click", () => {
     document.querySelector("#resources").scrollIntoView({ behavior: "smooth" });
+    closeMobileMenu();
 });
 
 openHome?.addEventListener("click", () => {
@@ -45,7 +128,7 @@ themeToggle.addEventListener("click", () => {
     localStorage.setItem("theme", isDark ? "dark" : "light");
 });
 
-// Mobile menu toggle
+// ==================== Mobile Menu Toggle ====================
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
 const mainNav = document.getElementById('mainNav');
@@ -54,12 +137,16 @@ menuToggle?.addEventListener('click', () => {
     if (mobileMenu) mobileMenu.classList.toggle('hidden');
 });
 
-// Active link highlight on scroll
+function closeMobileMenu() {
+    if (mobileMenu) mobileMenu.classList.add('hidden');
+}
+
+// ==================== Active Link Highlight ====================
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = Array.from(document.querySelectorAll('main section'));
 
 function setActiveLink() {
-    const scrollPos = window.scrollY + 120; // offset for header
+    const scrollPos = window.scrollY + 120;
     let current = sections[0];
     for (const sec of sections) {
         if (sec.offsetTop <= scrollPos) current = sec;
@@ -72,11 +159,12 @@ function setActiveLink() {
 window.addEventListener('scroll', setActiveLink);
 window.addEventListener('load', setActiveLink);
 
-// Close mobile menu when a mobile link is clicked
+// ==================== Close Mobile Menu ====================
 document.querySelectorAll('.mobile-link').forEach(l => {
-    l.addEventListener('click', () => mobileMenu?.classList.add('hidden'));
+    l.addEventListener('click', () => closeMobileMenu());
 });
 
+// ==================== CGPA Calculator ====================
 cgpaForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -110,6 +198,7 @@ cgpaForm.addEventListener("submit", async (event) => {
     }
 });
 
+// ==================== Contact Form ====================
 contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -145,4 +234,30 @@ contactForm.addEventListener("submit", async (event) => {
         contactFeedback.textContent = `❌ ${error.message}`;
         contactFeedback.style.color = "#dc2626";
     }
+});
+
+// ==================== Initialize Everything ====================
+document.addEventListener('DOMContentLoaded', () => {
+    initProgressBar();
+    animateCounters();
+    initScrollAnimations();
+    initBackToTop();
+    setActiveLink();
+});
+
+// Prevent zoom on double-tap for mobile
+document.addEventListener('touchstart', function(event) {
+    if (event.touches.length > 1) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+// ==================== Smooth Page Transitions ====================
+window.addEventListener('beforeunload', () => {
+    document.body.style.opacity = '0.95';
+});
+
+window.addEventListener('load', () => {
+    document.body.style.transition = 'opacity 0.3s ease';
+    document.body.style.opacity = '1';
 });
