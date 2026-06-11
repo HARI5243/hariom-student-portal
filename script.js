@@ -19,8 +19,15 @@ const contactMessage = document.getElementById("contactMessage");
 // Check for saved theme preference
 if (localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark");
-    themeToggle.textContent = "☀️";
+    if (themeToggle) themeToggle.textContent = "☀️";
 }
+
+// Toggle dark / light mode and persist the choice
+themeToggle?.addEventListener("click", () => {
+    const isDark = document.body.classList.toggle("dark");
+    themeToggle.textContent = isDark ? "☀️" : "🌙";
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+});
 
 openDashboard.addEventListener("click", () => {
     document.querySelector("#dashboard").scrollIntoView({ behavior: "smooth" });
@@ -80,7 +87,10 @@ const mobileMenu = document.getElementById('mobileMenu');
 const mainNav = document.getElementById('mainNav');
 
 menuToggle?.addEventListener('click', () => {
-    if (mobileMenu) mobileMenu.classList.toggle('hidden');
+    if (!mobileMenu) return;
+    const isOpen = mobileMenu.classList.toggle('hidden') === false;
+    menuToggle.classList.toggle('open', isOpen);
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
 });
 
 // Active link highlight on scroll
@@ -118,7 +128,11 @@ window.addEventListener('load', setActiveLink);
 
 // Close mobile menu when a mobile link is clicked
 document.querySelectorAll('.mobile-link').forEach(l => {
-    l.addEventListener('click', () => mobileMenu?.classList.add('hidden'));
+    l.addEventListener('click', () => {
+        mobileMenu?.classList.add('hidden');
+        menuToggle?.classList.remove('open');
+        menuToggle?.setAttribute('aria-expanded', 'false');
+    });
 });
 
 cgpaForm.addEventListener("submit", async (event) => {
@@ -250,3 +264,89 @@ contactForm.addEventListener("submit", async (event) => {
         contactFeedback.style.color = "#dc2626";
     }
 });
+
+// =========================
+// SCROLL PROGRESS BAR
+// =========================
+
+const progressBar = document.querySelector(".progress-bar");
+
+function updateProgressBar() {
+    if (!progressBar) return;
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = `${progress}%`;
+}
+
+window.addEventListener("scroll", updateProgressBar);
+window.addEventListener("load", updateProgressBar);
+
+// =========================
+// BACK TO TOP BUTTON
+// =========================
+
+const backToTop = document.getElementById("backToTop");
+
+function toggleBackToTop() {
+    if (!backToTop) return;
+    backToTop.classList.toggle("visible", window.scrollY > 400);
+}
+
+backToTop?.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+window.addEventListener("scroll", toggleBackToTop);
+window.addEventListener("load", toggleBackToTop);
+
+// =========================
+// ANIMATED COUNTERS
+// =========================
+
+function animateCounter(el) {
+    const target = parseFloat(el.dataset.target);
+    if (Number.isNaN(target)) return;
+
+    const isDecimal = !Number.isInteger(target);
+    const duration = 1500;
+    const start = performance.now();
+
+    function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const value = target * progress;
+        el.textContent = isDecimal ? value.toFixed(1) : Math.round(value).toString();
+        if (progress < 1) {
+            requestAnimationFrame(tick);
+        } else {
+            el.textContent = isDecimal ? target.toFixed(1) : Math.round(target).toString();
+        }
+    }
+
+    requestAnimationFrame(tick);
+}
+
+// =========================
+// REVEAL ON SCROLL + COUNTERS
+// =========================
+
+const revealEls = document.querySelectorAll(".fade-in-on-scroll");
+
+if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("visible");
+            entry.target.querySelectorAll(".counter").forEach(animateCounter);
+            obs.unobserve(entry.target);
+        });
+    }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+
+    revealEls.forEach((el) => observer.observe(el));
+} else {
+    // Fallback: reveal everything and run counters immediately
+    revealEls.forEach((el) => {
+        el.classList.add("visible");
+        el.querySelectorAll(".counter").forEach(animateCounter);
+    });
+}
